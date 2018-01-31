@@ -54,17 +54,18 @@ public class SouthAfricanIDMask implements IMaskFunction {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         // Date of Birth comes from parm 1
-        Date dob = null;
+        Date OrginalDate= null;
 
         try {
-            dob = sdf.parse((String) args[1]);
+            OrginalDate = sdf.parse((String) args[1]);
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        calendar.setTime(dob);
+        calendar.setTime(OrginalDate);
 
+        
         Integer dd = calendar.get(Calendar.DATE);
         Integer mm = calendar.get(Calendar.MONTH) + 1;
         Integer yyyy = calendar.get(Calendar.YEAR);
@@ -105,7 +106,7 @@ public class SouthAfricanIDMask implements IMaskFunction {
         if ("P".equalsIgnoreCase(nationality.substring(0, 1))) {
             outString = "18";
 
-            // SA Citizen
+        // SA Citizen
         } else if ("S".equalsIgnoreCase(nationality.substring(0, 1))) {
             outString = "08";
         }
